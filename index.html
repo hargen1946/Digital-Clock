@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07120d">
+  <meta name="description" content="年・月日の表示を選べる、音声通知付きデスクトップ時計。">
+  <title>デスクトップ時計</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307120d'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%236df5a3' stroke-width='4'/%3E%3Cpath d='M32 18v15l11 6' fill='none' stroke='%236df5a3' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="clock-app" aria-label="デスクトップ時計">
+    <header class="toolbar">
+      <h1>デスクトップ時計</h1>
+      <div class="tools">
+        <button id="settings-button" class="icon-button" aria-label="設定" aria-expanded="false" aria-controls="settings" title="設定">⚙</button>
+        <button id="close-button" class="icon-button" aria-label="閉じる" title="閉じる">×</button>
+      </div>
+    </header>
+    <section class="face" aria-label="現在時刻">
+      <time id="time">00:00:00</time>
+      <div id="date" class="date"></div>
+      <div class="boundary"><span id="next-label">次回通知</span><span id="next-time">--:--</span></div>
+      <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+    </section>
+    <div class="audio-panel">
+      <button id="audio-button" class="primary" aria-pressed="false">音声通知を開始</button>
+      <p id="audio-status" class="status" role="status">音声は停止中です</p>
+    </div>
+    <section id="settings" class="settings" hidden aria-label="設定">
+      <h2>表示</h2>
+      <div class="checks">
+        <label><input id="show-year" type="checkbox" checked>年を表示</label>
+        <label><input id="show-month-day" type="checkbox" checked>月日を表示</label>
+      </div>
+      <label class="select-label" for="interval">通知間隔</label>
+      <select id="interval"><option value="5">5分ごと</option><option value="15">15分ごと</option><option value="30">30分ごと</option><option value="60">1時間ごと</option></select>
+      <p class="hint">区切り時刻の1分前から10秒ごとに読み上げ、時刻になったらお知らせします。</p>
+      <button id="test-button" class="secondary">音声をテスト</button>
+      <p id="save-status" class="hint" role="status">表示と通知間隔は、このPCに保存されます。</p>
+    </section>
+    <footer>
+      <button id="install-button" class="text-button" hidden>アプリをインストール</button>
+      <details id="help"><summary>インストール・使い方</summary>
+        <div class="help-content">
+          <ol><li>このURLをMicrosoft Edgeで開きます。</li><li>アドレス欄のアプリのインストールアイコンを押します。見当たらない場合は、Edgeの「…」→「アプリ」からこのサイトをアプリとしてインストールします。</li><li>時計を起動し、Windowsのタスクバーにある時計アイコンを右クリックして「タスクバーにピン留めする」を選びます。</li></ol>
+          <p>次からはタスクバーのアイコンで起動できます。起動したら「音声通知を開始」を押してください。もう一台のPCでも同じURLを開き、同じ手順でインストールできます。</p>
+          <p>通知には日本語の読み上げ音声が必要です。時計を閉じると通知は停止します。最小化・スリープ中の通知は保証されません。</p>
+          <p>時刻はPCの時計を使用します。PCの時刻同期を有効にしてお使いください。</p>
+          <p id="offline-status" role="status">オフライン利用を準備しています…</p>
+        </div>
+      </details>
+      <p id="message" class="hint" role="status"></p>
+    </footer>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
