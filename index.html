@@ -8,13 +8,14 @@
   <title>デスクトップ時計</title>
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307120d'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%236df5a3' stroke-width='4'/%3E%3Cpath d='M32 18v15l11 6' fill='none' stroke='%236df5a3' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style-v2.css">
 </head>
 <body>
   <main class="clock-app" aria-label="デスクトップ時計">
     <header class="toolbar">
       <h1>デスクトップ時計</h1>
       <div class="tools">
+        <button id="pip-button" class="mini-button" aria-pressed="false" title="時刻だけを小さなウィンドウに表示">小窓表示</button>
         <button id="settings-button" class="icon-button" aria-label="設定" aria-expanded="false" aria-controls="settings" title="設定">⚙</button>
         <button id="close-button" class="icon-button" aria-label="閉じる" title="閉じる">×</button>
       </div>
@@ -45,9 +46,10 @@
       <button id="install-button" class="text-button" hidden>アプリをインストール</button>
       <details id="help"><summary>インストール・使い方</summary>
         <div class="help-content">
-          <ol><li>このURLをMicrosoft Edgeで開きます。</li><li>アドレス欄のアプリのインストールアイコンを押します。見当たらない場合は、Edgeの「…」→「アプリ」からこのサイトをアプリとしてインストールします。</li><li>時計を起動し、Windowsのタスクバーにある時計アイコンを右クリックして「タスクバーにピン留めする」を選びます。</li></ol>
+          <p>「小窓表示」で時刻だけの小さな時計を開けます。通常画面は最小化できますが、閉じると小窓も閉じます。小窓はほかの画面より手前に表示され、サイズと位置は手動で変えられます。</p>
+          <ol><li>このURLをGoogle ChromeまたはMicrosoft Edgeで開きます。</li><li>アドレス欄のアプリのインストールアイコンを押します。Chromeでは「…」→「キャスト、保存、共有」→「ページをアプリとしてインストール」、Edgeでは「…」→「アプリ」からもインストールできます。</li><li>時計を起動し、Windowsのタスクバーにある時計アイコンを右クリックして「タスクバーにピン留めする」を選びます。</li></ol>
           <p>次からはタスクバーのアイコンで起動できます。起動したら「音声通知を開始」を押してください。もう一台のPCでも同じURLを開き、同じ手順でインストールできます。</p>
-          <p>通知には日本語の読み上げ音声が必要です。時計を閉じると通知は停止します。最小化・スリープ中の通知は保証されません。</p>
+          <p>通知には日本語の読み上げ音声が必要です。通常画面または小窓が表示されている間に通知します。時計を閉じると通知は停止します。両方が非表示の間は一時停止し、スリープ中は通知しません。</p>
           <p>時刻はPCの時計を使用します。PCの時刻同期を有効にしてお使いください。</p>
           <p id="offline-status" role="status">オフライン利用を準備しています…</p>
         </div>
@@ -55,6 +57,6 @@
       <p id="message" class="hint" role="status"></p>
     </footer>
   </main>
-  <script type="module" src="./app.js"></script>
+  <script type="module" src="./app-v3.js"></script>
 </body>
 </html>
