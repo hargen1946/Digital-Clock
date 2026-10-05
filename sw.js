@@ -1,6 +1,6 @@
 const prefix = `desktop-clock-${self.registration.scope}-`;
-const cacheName = `${prefix}v3`;
-const files = ['index.html','style-v2.css','app-v3.js','clock-logic.js','manifest.webmanifest','icon-192.png','icon-512.png'];
+const cacheName = `${prefix}v4`;
+const files = ['index.html','style-v2.css','app-v4.js','clock-logic.js','manifest.webmanifest','icon-192.png','icon-512.png'];
 const urls = new Set(files.map(f => new URL(f,self.registration.scope).href));
 const pageURL = new URL('index.html',self.registration.scope).href;
 // Only our own app shell is cached, never sign-in pages or third-party responses.
